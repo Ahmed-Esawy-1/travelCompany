@@ -1,0 +1,984 @@
+@import url("https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parisienne&display=swap");
+:root {
+  --main-color: #ffe710;
+  --secondary-color: #f38f39;
+  --secondary-bg: #efefef;
+  --padding: 50px;
+  --line-height: 1.8;
+  --transition: 0.3s;
+  --p-color: #777;
+  --title-font: "Fontdiner Swanky", serif;
+  --secondary-font: "Parisienne", cursive;
+  --main-transition: 0.4s;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+ul {
+  list-style: none;
+  padding-inline: 0;
+  margin-top: 0;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+h2 {
+  margin-top: 0;
+}
+.container {
+  padding-inline: 15px;
+  margin-inline: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 972px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 88%;
+  }
+}
+/* Start Component */
+.section-title {
+  text-align: center;
+  font-size: 45px;
+  font-weight: bold;
+  font-family: var(--title-font);
+  color: var(--secondary-color);
+}
+@media (max-width: 767px) {
+  .section-title {
+    font-size: 25px;
+  }
+}
+/* End Component */
+/* Start Header */
+header {
+  position: sticky;
+  top: 0px;
+  display: flex;
+  justify-content: space-between;
+  min-height: 60px;
+  z-index: 10000;
+  background-color: #fff;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  position: relative;
+  padding-left: 10px;
+}
+header .logo {
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 50px;
+  height: 50px;
+}
+header .menu {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+header .menu .discover {
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: var(--main-transition);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+header .menu .discover i {
+  font-size: 12px;
+  color: #000;
+}
+header .links {
+  position: absolute;
+  background-color: #fafcff;
+  top: 75px;
+  width: 200px;
+  opacity: 0;
+  transition: top var(--main-transition), opacity var(--main-transition);
+  pointer-events: none;
+}
+[lang="en"] header .links {
+  left: 0;
+}
+[lang="ar"] header .links {
+  right: 0px;
+}
+header .menu:hover .links {
+  opacity: 1;
+  top: 60px;
+  pointer-events: all;
+}
+header .links li a {
+  display: block;
+  width: 100%;
+  color: black;
+  padding: 10px;
+}
+header .links li a:hover {
+  background-color: #eaecf2;
+}
+header > div {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  gap: 15px;
+}
+header > div .lang-box {
+  position: relative;
+}
+header .lang-box .global {
+  border: 1px solid #eee;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+header .lang-box .global.active {
+  background-color: var(--secondary-color);
+  color: white;
+}
+header .lang-box .languages {
+  position: absolute;
+  top: 62px;
+  left: -70px;
+  background-color: #fafcff;
+  color: #fff;
+  width: 200px;
+  opacity: 0;
+  transition: top var(--main-transition), opacity var(--main-transition);
+  pointer-events: none;
+}
+header .lang-box .languages.show {
+  opacity: 1;
+  top: 52px;
+  pointer-events: all;
+}
+header .lang-box .languages li {
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+}
+header .lang-box .languages li:hover {
+  background-color: #eaecf2;
+}
+header .profile {
+  width: 87px;
+  height: 46px;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+header .profile i.user {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ebebeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* End Header */
+@media (max-width: 767px) {
+  body.menu-open .mypage {
+    filter: blur(3px);
+    pointer-events: none;
+  }
+}
+/* Start Landing Page */
+.landing {
+  min-height: 100vh;
+  position: relative;
+}
+.landing .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.landing .carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+.landing .images {
+  display: flex;
+  transition: 1s ease;
+}
+.landing .images img {
+  min-width: 100%;
+  min-height: 100vh;
+  scroll-snap-align: center;
+}
+.landing header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 10px;
+  z-index: 10;
+}
+.landing .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 350px;
+  text-align: center;
+  z-index: 2;
+}
+.landing .content h1 {
+  margin-top: 0;
+  margin-bottom: 7px;
+  font-size: 38px;
+  color: #fff;
+}
+.landing .content h1 span {
+  color: var(--main-color);
+}
+.landing .content p {
+  line-height: var(--line-height);
+  font-size: 17px;
+  color: #fff;
+}
+.landing .content .explore {
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #e60000;
+}
+.landing .arrows {
+  position: absolute;
+  bottom: 40px;
+  z-index: 2;
+  display: flex;
+  gap: 10px;
+  direction: ltr;
+}
+[lang="en"] .landing .arrows {
+  right: 90px;
+}
+[lang="ar"] .landing .arrows {
+  left: 90px;
+}
+.landing .arrows i {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e60000;
+  padding: 15px 20px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+/* End Landing Page */
+/* Start Tour Type */
+.tour-type {
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+}
+.tour-type .tours,
+.tour-type .other-tours {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.tour-type .tours {
+  margin-bottom: 30px;
+}
+.tour-type .other-tours {
+  padding-inline: 15px;
+}
+.tour-type .tour {
+  background-color: #fff;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border: 1px solid #eee;
+  box-shadow: 0 12px 20px 0px rgba(0, 0, 0, 0.13),
+    0 2px 4px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  transition: var(--main-transition);
+}
+.tour-type .tours .tour {
+  width: calc(25% - (60px / 4));
+}
+.tour-type .other-tours .tour {
+  width: calc(100% / 6 - (100px / 6));
+}
+.tour-type .tour:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px 0px rgba(0, 0, 0, 0.6),
+    0 2px 4px 0px rgba(0, 0, 0, 0.6);
+}
+.tour-type .tour i {
+  border-radius: 50%;
+  background-color: #ebebeb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--main-transition);
+}
+.tour-type .tours .tour i {
+  width: 100px;
+  height: 100px;
+  font-size: 50px;
+}
+.tour-type .other-tours .tour i {
+  width: 64px;
+  height: 64px;
+  font-size: 30px;
+}
+.tour-type .tour i.ancient {
+  color: #000;
+}
+.tour-type .tour i.beach {
+  color: var(--secondary-color);
+}
+.tour-type .tour i.cruise {
+  color: #74c0fc;
+}
+.tour-type .tour i.hiking {
+  color: #f38f39;
+}
+.tour-type .tour i.cruise {
+  color: #74c0fc;
+}
+.tour-type .tour i:hover {
+  color: #fff;
+  background-color: var(--secondary-color);
+}
+.tour-type .tour span {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+@media (max-width: 991px) {
+  .tour-type .tours .tour {
+    width: calc(50% - 10px);
+  }
+}
+@media (max-width: 767px) {
+  .tour-type .tours .tour {
+    width: 100%;
+  }
+  .tour-type .other-tours .tour {
+    width: calc(50% - 10px);
+  }
+}
+/* End Tour Type */
+/* Start Top Destinations */
+.destinations {
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+  padding: 15px;
+}
+
+.destinations > .content {
+  display: flex;
+  gap: 15px;
+}
+@media (max-width: 767px) {
+  .destinations > .content {
+    flex-direction: column;
+  }
+}
+.destinations > .content > div {
+  flex-basis: 50%;
+}
+.destinations .book {
+  background-image: url(../images/book1.webp);
+  background-size: cover;
+  min-height: 60vh;
+  position: relative;
+}
+.destinations .book::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.destinations .book .text {
+  position: absolute;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 30px;
+  color: #fff;
+}
+.destinations .text p {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: var(--secondary-font);
+  color: var(--secondary-color);
+  font-size: 30px;
+  text-align: start;
+}
+.destinations .book a {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  width: 80%;
+  transform: translateX(-50%);
+  display: block;
+  width: fit-content;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background-color: #e60000;
+  color: #fff;
+  transition: background-color 0.8s;
+}
+.destinations .book a:hover {
+  background-color: #820000;
+}
+.destinations .destination {
+  column-count: 3;
+  column-gap: 8px;
+}
+@media (max-width: 767px) {
+  .destinations .destination {
+    column-count: 2;
+    column-gap: 8px;
+  }
+}
+.destinations .destination a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  break-inside: avoid;
+  color: #fff;
+}
+.destinations .destination a img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: 0.5s;
+  min-height: 200px;
+}
+.destinations .destination a:hover img {
+  scale: 1.3;
+}
+.destinations .destination a span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 35px;
+  font-family: var(--secondary-font);
+  transition: 0.5s;
+}
+.destinations .destination a:hover span {
+  background-color: rgba(0, 0, 0, 0);
+}
+/* End Top Destinations */
+/* Start Top Attractions */
+.attractions {
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+  background-color: var(--secondary-bg);
+}
+.attractions .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px 15px;
+}
+.attractions .card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.attractions .card img {
+  width: 102px;
+  height: 95px;
+  border-radius: 8px;
+}
+.attractions .card .info {
+  flex: 1;
+}
+.attractions .card .info a {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+.attractions .card .info a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.attractions .card .info p {
+  font-size: 14px;
+  color: #757783;
+}
+/* End Top Attractions */
+/* Start Ancient Places */
+.ancient {
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+}
+.ancient .cards {
+  display: flex;
+  gap: 15px;
+}
+@media (max-width: 767px) {
+  .ancient .cards {
+    flex-direction: column;
+  }
+}
+.ancient .card {
+  display: block;
+  border-radius: 5px;
+  overflow: hidden;
+  max-height: 290px;
+  position: relative;
+}
+.ancient .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(49, 48, 65, 0.55);
+  transition: 0.8s;
+  z-index: 1;
+}
+.ancient .card:hover::before {
+  background-color: rgba(49, 48, 65, 0);
+}
+.ancient .cards:not(:last-child) {
+  margin-bottom: 15px;
+}
+.ancient .cards.one .card:nth-child(1) {
+  flex-basis: 25%;
+}
+.ancient .cards.one .card:nth-child(2) {
+  flex-basis: 45%;
+}
+.ancient .cards.one .card:nth-child(3) {
+  flex-basis: 30%;
+}
+.ancient .cards.two .card:nth-child(1) {
+  flex-basis: calc(100% / 3);
+}
+.ancient .cards.two .card:nth-child(2) {
+  flex-basis: calc(100% / 3);
+}
+.ancient .cards.two .card:nth-child(3) {
+  flex-basis: calc(100% / 3);
+}
+.ancient .cards.three .card:nth-child(1) {
+  flex-basis: 40%;
+}
+.ancient .cards.three .card:nth-child(2) {
+  flex-basis: 20%;
+}
+.ancient .cards.three .card:nth-child(3) {
+  flex-basis: 40%;
+}
+.ancient .card img {
+  width: 100%;
+  height: 100%;
+  transition: var(--main-transition);
+}
+.ancient .card:hover img {
+  transform: scale(1.2);
+}
+.ancient .card h4 {
+  font-size: 25px;
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 15px;
+  z-index: 2;
+}
+[lang="en"] .ancient .card h4 {
+  left: 15px;
+}
+
+[lang="ar"] .ancient .card h4 {
+  right: 15px;
+}
+.ancient .card h4 span {
+  display: block;
+  font-family: var(--secondary-font);
+  font-size: 35px;
+  color: var(--secondary-color);
+}
+/* End Ancient Places */
+/* Start Warm Destinations */
+.warm-destinations {
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+  position: relative;
+  background-color: #efefef;
+
+  padding-inline: 15px;
+}
+.warm-destinations .carousel {
+  overflow: hidden;
+}
+.warm-destinations .cards {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  gap: 15px;
+  transition: 0.4s;
+}
+.warm-destinations .card {
+  min-width: calc(100% / 6 - 15px);
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid #fff;
+  box-shadow: 0 12px 20px 0px rgba(0, 0, 0, 0.13),
+    0 2px 4px 0px rgba(0, 0, 0, 0.12);
+}
+@media (max-width: 1150px) {
+  .warm-destinations .card {
+    min-width: calc(100% / 5 - 15px);
+  }
+}
+@media (max-width: 1100px) {
+  .warm-destinations .card {
+    min-width: calc(100% / 4 - 15px);
+  }
+}
+@media (max-width: 750px) {
+  .warm-destinations .card {
+    min-width: calc(100% / 3 - 15px);
+  }
+}
+@media (max-width: 550px) {
+  .warm-destinations .card {
+    min-width: calc(50% - 10px);
+  }
+}
+.warm-destinations .card img {
+  width: 100%;
+  height: 220px;
+}
+.warm-destinations .card a {
+  display: block;
+  padding: 10px 0 0 10px;
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+}
+[lang="ar"] .warm-destinations .card a {
+  padding: 10px 10px 0 0;
+}
+.warm-destinations .card p {
+  font-size: 14px;
+  padding-left: 10px;
+  color: #757783;
+}
+[lang="ar"] .warm-destinations .card a {
+  padding-left: 0;
+  padding-right: 10px;
+}
+.warm-destinations .control-btn {
+  margin-top: 25px;
+  text-align: right;
+}
+[lang="ar"] .warm-destinations .control-btn {
+  text-align: left;
+}
+.warm-destinations .control-btn .prev-btn,
+.warm-destinations .control-btn .next-btn {
+  border: none;
+  outline: none;
+  padding: 7px 12px;
+  border-radius: 3px;
+  color: #fff;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+.warm-destinations .control-btn .prev-btn.hide,
+.warm-destinations .control-btn .next-btn.hide {
+  background-color: rgba(243, 144, 57, 0.4);
+  pointer-events: none;
+}
+/* End Warm Destinations */
+/* Start Exclusive Packages */
+.packages {
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+}
+.packages > span {
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+  font-family: var(--secondary-font);
+  font-style: italic;
+  color: var(--main-color);
+  padding: 5px 10px;
+  font-size: 50px;
+  text-align: center;
+}
+.packages h2 {
+  margin-top: -15px;
+}
+@media (max-width: 767px) {
+  .packages > span {
+    font-size: 35px;
+  }
+}
+.packages .items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.packages .item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 20px 0px rgba(0, 0, 0, 0.13),
+    0 2px 4px 0px rgba(0, 0, 0, 0.12);
+  background-color: #fff;
+}
+.packages .item .item-labels {
+  position: absolute;
+  top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 15px;
+  z-index: 1;
+}
+.packages .item-labels .features {
+  background-color: #f38f39;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+.packages .item-labels .wish-list {
+  background-color: #fff;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.packages .item-labels .wish-list:hover {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+.packages .item img {
+  position: relative;
+  max-width: 100%;
+}
+.packages .item .content {
+  position: relative;
+  margin-top: -40px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 35px 35px 0 0;
+  min-height: 200px;
+}
+.packages .item .icons {
+  padding-top: 5px;
+}
+[lang="en"] .packages .item .icons {
+  text-align: right;
+}
+[lang="ar"] .packages .item .icons {
+  text-align: left;
+}
+.packages .item .icons i {
+  font-size: 25px;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.packages .item .icons i:hover {
+  color: var(--secondary-color);
+}
+.packages .item p {
+  max-height: 46px;
+  margin-bottom: 10px;
+  padding: 2px 0;
+  font-size: 20px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.packages .item .cost {
+  color: #757783;
+}
+.packages .item .cost span:first-child {
+  font-size: 20px;
+}
+[lang="en"] .packages .item .cost span:first-child {
+  margin-right: 20px;
+}
+[lang="ar"] .packages .item .cost span:first-child {
+  margin-left: 20px;
+}
+.packages .item .cost span:nth-child(2) {
+  color: var(--secondary-color);
+}
+.packages .item .explore {
+  position: absolute;
+  bottom: 15px;
+  width: calc(100% - 30px);
+  text-align: right;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid #eee;
+  font-size: 14px;
+  color: var(--secondary-color);
+}
+[lang="en"] .packages .item .explore {
+  text-align: right;
+}
+[lang="ar"] .packages .item .explore {
+  text-align: left;
+}
+.packages .item .explore a {
+  color: var(--secondary-color);
+}
+/* End Exclusive Packages */
+/* Strat Footer */
+footer {
+  padding-top: var(--padding);
+  /* background: url(../images/footer.webp); */
+  /* background: url(https://t4.ftcdn.net/jpg/01/78/90/21/360_F_178902116_QPdOVcn5gAisX0c5ESaz26IC78VTn204.jpg); */
+  background-size: cover;
+  background-color: #252731;
+}
+
+footer ul.socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+footer ul.socials li a {
+  font-size: 30px;
+}
+footer ul.socials li a i.face:hover {
+  color: #0078d7;
+}
+footer ul.socials li a i.x:hover {
+  color: #14171a;
+}
+footer ul.socials li a i.insta:hover {
+  color: #e1306c;
+}
+footer ul.socials li a i.tube:hover {
+  color: #ff0000;
+}
+footer ul.socials li a i.linked:hover {
+  color: #004182;
+}
+footer .information {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+footer .information > ul {
+  width: calc(25% - (75px / 4));
+}
+@media (max-width: 991px) {
+  footer .information > ul {
+    width: calc(50% - 25px);
+  }
+}
+@media (max-width: 650px) {
+  footer .information {
+    gap: 0;
+  }
+  footer .information > ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+  }
+}
+footer .information > ul li {
+  padding: 10px;
+}
+footer .information > ul li a {
+  transition: var(--main-transition);
+}
+footer .information > ul li a:hover {
+  color: var(--secondary-color);
+}
+[lang="en"] footer .information > ul li a:hover {
+  padding-left: 10px;
+}
+[lang="ar"] footer .information > ul li a:hover {
+  padding-right: 10px;
+}
+[lang="en"] footer .information > ul li a i {
+  margin-right: 10px;
+}
+[lang="ar"] footer .information > ul li a i {
+  margin-left: 10px;
+}
+footer .copy-right {
+  border-top: 1px solid #eee;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 15px;
+}
+/* End Footer */
